@@ -13,7 +13,13 @@ TBitField::TBitField(int len) {
 	if (len<=0) {
 		throw invalid_argument("Len<0...");
 	}
-	bits = (len + (BitInTELEM - 1)) / BitInTELEM;
+	int tmp = 1;
+	int deg = 0;//BitInTELEM - это два в степени deg
+	while (tmp != BitInTELEM){
+		deg++;
+		tmp = tmp * 2;
+	}
+	bits = (len + (BitInTELEM - 1)) >> deg;
 	MemLen = bits;
 	BitLen = len;
 	pMem = new TELEM[MemLen];
