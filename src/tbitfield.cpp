@@ -73,7 +73,7 @@ void TBitField::SetBit(const int n) // установить бит
 	if (n>=BitLen) {
 		throw invalid_argument("BitLen < n...");
 	}
-	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] | GetMemMask(n);
+	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] |= GetMemMask(n);
 }
 
 void TBitField::ClrBit(const int n) // очистить бит
