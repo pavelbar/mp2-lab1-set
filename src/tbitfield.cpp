@@ -10,7 +10,7 @@
 TBitField::TBitField(int len) {
 	//try (контролировать), catch (ловить), throw (порождать)
 	TELEM bits;
-	if (len<0) {
+	if (len<=0) {
 		throw invalid_argument("Len<0...");
 	}
 	bits = (len + (BitInTELEM - 1)) / BitInTELEM;
