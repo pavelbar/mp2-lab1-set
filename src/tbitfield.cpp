@@ -44,8 +44,13 @@ TBitField::~TBitField() {
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
-
-	return n / BitInTELEM;
+	int tmp = 1;
+	int deg = 0;//BitInTELEM - это два в степени deg
+	while (tmp != BitInTELEM){
+		deg++;
+		tmp = tmp * 2;
+	}
+	return n >> deg;
 }
 
 TELEM TBitField::GetMemMask(const int n) const // битовая маска для бита n
