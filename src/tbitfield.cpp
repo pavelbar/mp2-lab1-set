@@ -34,6 +34,7 @@ TBitField::TBitField(const TBitField &bf) // конструктор копиро
 	BitLen = bf.BitLen;
 	MemLen = bf.MemLen;
 	pMem = new TELEM[MemLen];
+	if (pMem == NULL)	std::cout << "Error create new memory" << std::endl;
 	for (int i = 0; i < MemLen; i++)
 		pMem[i] = bf.pMem[i];
 
