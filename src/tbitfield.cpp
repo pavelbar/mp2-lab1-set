@@ -134,19 +134,11 @@ int TBitField::operator==(const TBitField &bf) const // сравнение
 
 int TBitField::operator!=(const TBitField &bf) const // сравнение
 {
-	int result = 0;
-	if (BitLen == bf.BitLen)
-	{//если у них равные длины
-		for (int i = 0; i < BitLen; i++) {
-			if (GetBit(i) != bf.GetBit(i)) {
-				result = 1;
-				return result;
-			}
-		}
-	}
-	else {//если у них разные длины
-		result = 1;
-	}
+	int result = 1;
+	if (BitLen != bf.BitLen) result = 1;
+	else
+	for (int i = 0; i < MemLen; i++)
+	if (pMem[i] != bf.pMem[i]) { result = 1; break; }
 	return result;
 }
 
