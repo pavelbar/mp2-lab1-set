@@ -125,18 +125,10 @@ TBitField& TBitField::operator=(const TBitField &bf) // присваивание
 int TBitField::operator==(const TBitField &bf) const // сравнение
 {
 	int result = 1;
-	if (BitLen == bf.BitLen)
-	{//если у них равные длины
-		for (int i = 0; i < BitLen; i++) {
-			if (GetBit(i) != bf.GetBit(i)) {
-				result = 0;
-				return result;
-			}
-		}
-	}
-	else {//если у них разные длины
-		result = 0;
-	}
+	if (BitLen != bf.BitLen) result = 0;
+	else
+	for (int i = 0; i < MemLen; i++)
+	if (pMem[i] != bf.pMem[i]) { result = 0; break; }
 	return result;
 }
 
