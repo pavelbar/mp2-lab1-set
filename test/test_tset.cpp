@@ -4,25 +4,25 @@
 
 TEST(TSet, My_combine)
 {
-	const int size1 = 5, size2 = 6, size3 = 7;
-	TSet set1(size1), set2(size2), set3(size3), tmp(size3), expSet(size3);
-	// set1 = {0, 1}
+	const int size1 = 6;
+	TSet set1(size1), set2(size1), set3(size1), tmp(size1), expSet(size1);
+	// set1 = {1, 1, 0, 0, 0, 0}
 	set1.InsElem(0);
 	set1.InsElem(1);
-	// set2 = {2, 3}
+	// set2 = {0, 0, 1, 1, 0, 0}
 	set2.InsElem(2);
 	set2.InsElem(3);
-	// set3 = {4, 6}
+	// set3 = {0, 0, 0, 0, 1, 1}
 	set2.InsElem(4);
-	set2.InsElem(6);
-	tmp = set1 + set2 + set3;
-	// expSet = {0, 1, 2, 3, 4, 6}
+	set2.InsElem(5);
+	tmp = set3 + set2 + set1;
+	// expSet = {1, 1, 1, 1, 1, 1}
 	expSet.InsElem(0);
 	expSet.InsElem(1);
 	expSet.InsElem(2);
 	expSet.InsElem(3);
 	expSet.InsElem(4);
-	expSet.InsElem(6);
+	expSet.InsElem(5);
 	EXPECT_EQ(expSet, tmp);
 }
 
