@@ -70,7 +70,7 @@ void TBitField::SetBit(const int n) // установить бит
 	if (n<0) {
 		throw invalid_argument("Bit < 0...");
 	}
-	if (n>BitLen) {
+	if (n>=BitLen) {
 		throw invalid_argument("BitLen < n...");
 	}
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] | GetMemMask(n);
@@ -81,7 +81,7 @@ void TBitField::ClrBit(const int n) // очистить бит
 	if (n<0) {
 		throw invalid_argument("Bit < 0...");
 	}
-	if (n>BitLen) {
+	if (n >= BitLen) {
 		throw invalid_argument("BitLen < n...");
 	}
 	pMem[GetMemIndex(n)] = pMem[GetMemIndex(n)] & ~GetMemMask(n);
@@ -92,7 +92,7 @@ int TBitField::GetBit(const int n) const // получить значение б
 	if (n<0) {
 		throw invalid_argument("n < 0...");
 	}
-	if (n>BitLen) {
+	if (n >= BitLen) {
 		throw invalid_argument("BitLen < n...");
 	}
 	if ((pMem[GetMemIndex(n)] & GetMemMask(n)) == 0) return 0;
