@@ -191,6 +191,7 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 
 TBitField TBitField::operator~(void) // отрицание
 {
+	//нет идей, пока что
 	TBitField tmp(BitLen);
 	for (int i = 0; i < BitLen; i++)
 	{
