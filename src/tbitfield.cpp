@@ -23,6 +23,7 @@ TBitField::TBitField(int len) {
 	MemLen = bits;
 	BitLen = len;
 	pMem = new TELEM[MemLen];
+	if (pMem == NULL)	std::cout << "Error create new memory"  << std::endl;
 	for (int i = 0; i < MemLen; i++) {
 		pMem[i] = 0;
 	}
