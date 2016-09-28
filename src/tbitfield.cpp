@@ -13,12 +13,14 @@ TBitField::TBitField(int len) {
 	if (len<=0) {
 		throw invalid_argument("Len<0...");
 	}
-	int deg = 0;//BitInTELEM - это два в степени deg
-	if (BitInTELEM == 8)  deg = 3;
-	if (BitInTELEM == 16) deg = 4;
-	if (BitInTELEM == 32) deg = 5;
-	if (BitInTELEM == 64) deg = 6;
-	if (BitInTELEM == 128) deg = 7;
+	if (deg == 0)
+	{
+		if (BitInTELEM == 8)  deg = 3;
+		if (BitInTELEM == 16) deg = 4;
+		if (BitInTELEM == 32) deg = 5;
+		if (BitInTELEM == 64) deg = 6;
+		if (BitInTELEM == 128) deg = 7;
+	}
 	bits = (len + (BitInTELEM - 1)) >> deg;
 	MemLen = bits;
 	BitLen = len;
@@ -50,12 +52,6 @@ TBitField::~TBitField() {
 
 int TBitField::GetMemIndex(const int n) const // индекс Мем для бита n
 {
-	int deg = 0;//BitInTELEM - это два в степени deg
-	if (BitInTELEM == 8)  deg = 3;
-	if (BitInTELEM == 16) deg = 4;
-	if (BitInTELEM == 32) deg = 5;
-	if (BitInTELEM == 64) deg = 6;
-	if (BitInTELEM == 128) deg = 7;
 	return n >> deg;
 }
 
@@ -184,12 +180,13 @@ TBitField TBitField::operator&(const TBitField &bf) // операция "и"
 
 TBitField TBitField::operator~(void) // отрицание
 {
+	/*
 	int len = BitLen;
 	TBitField result(len);
 	for (int i = 0; i < MemLen; i++)
 		result.pMem[i] = ~pMem[i];
 	return result;
-	/*
+	*/
 		TBitField tmp(BitLen);
 		for (int i = 0; i < BitLen; i++)
 		{
@@ -197,7 +194,7 @@ TBitField TBitField::operator~(void) // отрицание
 			else tmp.SetBit(i);
 		}
 		return tmp;
-		*/
+		
 }
 
 // ввод/вывод
